@@ -19,14 +19,7 @@
 * Normal User
     * Can perform CRUD on stories and can register/ creat an author with his/her details.
 ```json
-{  "permissions": [
-    "delete:story",
-    "get:stories",
-    "get:story",
-    "patch:story",
-    "post:story",
-    "post:user"
-  ]}
+{}
 ```
 ## Tables
 * Authors
