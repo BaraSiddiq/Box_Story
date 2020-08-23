@@ -1,11 +1,10 @@
-from flask import (Flask, request, jsonify, abort, render_template)
+from flask import (Flask, request, jsonify, abort)
 from flask_cors import CORS
 from models import setup_db, Author, Story
 from auth import requires_auth
 import sys
-import json
 
-app = Flask(__name__)
+
 def create_app(test_config=None):
     # Application setup.
     #-----------------------------------------------------------------------------------------------------------------------
