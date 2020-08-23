@@ -3,8 +3,8 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 from flask import request, jsonify, abort
-
-AUTH0_DOMAIN = 'baratest.auth0.com'
+import os
+AUTH0_DOMAIN = os.environ['AUTH_DOMAIN']
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'story'
 

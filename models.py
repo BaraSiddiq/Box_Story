@@ -6,7 +6,7 @@ import json
 database_name = "storyDb"
 password = 'bara1414'
 # database_path = "postgres://{}:{}@{}/{}".format('postgres', password, 'localhost:5432', database_name)
-database_path = "postgres://hguxniwyynzgqz:a694c25bc5f035e32e292626df4507c739b9ddb3c6ed7cfb2d8791755ab0207a@ec2-34-237-89-96.compute-1.amazonaws.com:5432/ddrbksaa241mlt"
+database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 def setup_db(app, database_path=database_path):
