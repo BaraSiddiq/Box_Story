@@ -1,12 +1,6 @@
 #host
 https://box-story.herokuapp.com/ | https://git.heroku.com/box-story.git
 
-#login  url
-https://baratest.auth0.com/authorize?audience=story&response_type=token&client_id=9H9u2Vz2wvCmFInkkSEiIPqrsjFyzo64&redirect_uri=http://localhost:5000/
-
-#logout url
-https://baratest.auth0.com/v2/logout?client_id=9H9u2Vz2wvCmFInkkSEiIPqrsjFyzo64&returnTo=http://localhost:5000/logout
-
 #procfile
 web: gunicorn app:app
 

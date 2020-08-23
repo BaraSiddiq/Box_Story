@@ -26,7 +26,8 @@ def create_app(test_config=None):
 
     # User Account APIs.
     #-----------------------------------------------------------------------------------------------------------------------
-    @app.route('/register', methods=['POST'])
+    # Register a new author in the database.
+    @app.route('/authors', methods=['POST'])
     @requires_auth('post:user')
     def register(payload):
         data = request.get_json()
@@ -45,7 +46,7 @@ def create_app(test_config=None):
             'message': 'The user was registered successfully.'
         }
         return jsonify(res)
-
+    # Return all authors details accessible only by manager account.
     @app.route('/authors', methods=['GET'])
     @requires_auth('get:users')
     def get_users(payload):
@@ -79,7 +80,7 @@ def create_app(test_config=None):
             }
 
         return jsonify(res)
-
+    # Deletes a specific user only accessible by the manager.
     @app.route('/authors/<int:id>', methods=['DELETE'])
     @requires_auth('delete:user')
     def delete_user(payload, id):
@@ -103,7 +104,12 @@ def create_app(test_config=None):
 
     # Story APIs.
     #-----------------------------------------------------------------------------------------------------------------------
+    # Returns available stories if exist, does not require authentication.
     @app.route('/')
+    def home():
+        msg = 'Welcome to Box Story.'
+        return msg
+    @app.route('/stories')
     def get_stories():
         print(sys.executable)
         stories = Story.query.all()
@@ -138,6 +144,7 @@ def create_app(test_config=None):
         }
         return jsonify(res)
 
+    # Returns a specific story
     @app.route('/stories/<int:id>', methods=['GET'])
     @requires_auth('get:story')
     def get_story(payload, id):
@@ -160,6 +167,7 @@ def create_app(test_config=None):
         msg = 'Seems like wrong stored record.'
         return abort(500, msg)
 
+    # Creates a new story made by the current user.
     @app.route('/stories', methods=['POST'])
     @requires_auth('post:story')
     def new_story(payload):
@@ -185,6 +193,7 @@ def create_app(test_config=None):
 
         return abort(401)
 
+    # Deletes a story only accessible by the user who wrote it.
     @app.route('/stories/<int:id>', methods=['DELETE'])
     @requires_auth('delete:story')
     def delete_story(payload, id):
@@ -208,6 +217,7 @@ def create_app(test_config=None):
         msg = 'Seems like wrong stored record.'
         return abort(500, msg)
 
+    # Updates a story only accessible by the user who wrote it.
     @app.route('/stories/<int:id>', methods=['PATCH'])
     @requires_auth('patch:story')
     def edit_story(payload, id):

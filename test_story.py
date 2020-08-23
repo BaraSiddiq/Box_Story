@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from app import create_app
 from models import setup_db
 
+# Place the token you want to test here.
 TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImxHWXRVYnVTYkRVTzlyYnI0VEsxYiJ9.eyJpc3MiOiJodHRwczovL2JhcmF0ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjNkNTc5ODg4MTcwMTAwMzcwOTE5YTMiLCJhdWQiOiJzdG9yeSIsImlhdCI6MTU5ODA3MDE1OSwiZXhwIjoxNTk4MTU2NTU5LCJhenAiOiI5SDl1MlZ6Mnd2Q21GSW5ra1NFaUlQcXJzakZ5em82NCIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnN0b3J5IiwiZGVsZXRlOnVzZXIiLCJnZXQ6c3RvcmllcyIsImdldDpzdG9yeSIsImdldDp1c2VycyIsInBhdGNoOnN0b3J5IiwicG9zdDpzdG9yeSIsInBvc3Q6dXNlciJdfQ.XkZSoNkxPdLk58B7lsHNav6_bgJgQCSkGMfpZFoQzKWc7VmPfTehSLLVTC_JxJpBBldCaWW7FoWRt99JHsRQeUyfqecP24mkdWO6pA006s6LG5PyizM_8u8l0XcSwYPeyKUabz1bvIa1XNvFrdpsqvzYlqg3xmb_qx4zsO9sy4HuJZW9OzIDxEZ7gEksVRslackm4aD9t_CIlG-Pc7gWOUJfwsFf_1G6b96uHFbc6MMd9xgq_NwLfTfZXs0i02Cz8vs0S7waZbY9C_zFaEH6H36M1ydxxrrvBAAy2Fdnjw4qbXa9pOx_hBmdJZo5JP3zOkUKOsxquQG5Q4Hh26YGnA'
 
 
@@ -13,7 +14,7 @@ class TriviaTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "storyTest"
-        self.password = 'bara1414'
+        self.password = ''
         self.database_path = "postgres://{}:{}@{}/{}".format('postgres', self.password, 'localhost:5432',
                                                              self.database_name)
         setup_db(self.app, self.database_path)
